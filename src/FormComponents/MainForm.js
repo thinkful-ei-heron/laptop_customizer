@@ -9,56 +9,38 @@ import Feature from './Feature';
 
 export default class MainForm extends Component {
 
-  updateFeature = (feature, newValue) => {
-    const selected = Object.assign({}, this.state.selected);
-    selected[feature] = newValue;
-    this.setState({
-      selected
-    });
-  };
+  //this.props contains ->
+  // features
+  // selected
+  // currencyFormat
+  // updateFeature
 
   render() {
-    let Features = this.props.features.map
     return (
-      <form className="main__form" >
+      <form className='formContainer'>
         <h2>Customize your laptop</h2>
-        {Features}
+        {/* features.map -> <Feature /> */}
+        {
+          Object.entries(this.props.features).map((feature, idx) => {
+            // Object.keys(this.props.features).map((feature, idx) => {
+            //   const featureHash = feature + '-' + idx;
+            //   this.props.features[feature].map(item => {
+            // const itemHash = slugify(JSON.stringify(item));
+            console.log('feature: ' + feature)
+            console.log(feature[0]) // -> Processor / OS etc
+            console.log(feature[1]) // -> Array [0: {17th Gen Intel}, 1: {Prof X AMD}]
+            console.log(feature[1][0].name) // -> 17th Gen Intel
+            // console.log('index: ' + idx)
+            return (
+              <Feature
+                key='test itemhash'
+                featureName='test featurename'
+                item='test item'
+              />
+            )
+          })
+        }
       </form>
-    )
-
-
-  };
+    );
+  }
 }
-
-
-
-// const features = Object.keys(this.state.features).map((feature, idx) => {
-//   const featureHash = feature + '-' + idx;
-//   const options = this.state.features[feature].map(item => {
-//     const itemHash = slugify(JSON.stringify(item));
-//     return (
-//       <div key={itemHash} className="feature__item">
-//         <input
-//           type="radio"
-//           id={itemHash}
-//           className="feature__option"
-//           name={slugify(feature)}
-//           checked={item.name === this.state.selected[feature].name}
-//           onChange={e => this.updateFeature(feature, item)}
-//         />
-//         <label htmlFor={itemHash} className="feature__label">
-//           {item.name} ({this.state.currencyFormat.format(item.cost)})
-//             </label>
-//       </div>
-//     );
-//   });
-
-//   return (
-//     <fieldset className="feature" key={featureHash}>
-//       <legend className="feature__name">
-//         <h3>{feature}</h3>
-//       </legend>
-//       {options}
-//     </fieldset>
-//   );
-// });

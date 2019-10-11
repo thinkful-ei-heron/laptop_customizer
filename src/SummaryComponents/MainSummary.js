@@ -1,20 +1,21 @@
 import React, { Component } from 'react'
+
 import SummaryOption from './SummaryOption';
+import { USCurrencyFormat } from '../App'
 
 export default class MainSummary extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      selected: this.props.selected,
-      total: this.props.total
-    }
-  }
+
+  total = Object.keys(this.props.selected).reduce(
+    (acc, curr) => acc + this.props.selected[curr].cost,
+    0
+  );
+
   render() {
     return (
       <div className="main__summary">
         <h2>Your cart</h2>
         {
-          Object.entries(this.state.selected).map((feature, idx) => {
+          Object.entries(this.props.selected).map((feature, idx) => {
             // console.log(feature[1])
             return <SummaryOption
               key={idx}
@@ -29,7 +30,7 @@ export default class MainSummary extends Component {
         <div className="summary__total">
           <div className="summary__total__label">Total</div>
           <div className="summary__total__value">
-            {this.props.total}
+            {USCurrencyFormat.format(this.total)}
           </div>
         </div>
       </div>

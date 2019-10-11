@@ -5,20 +5,15 @@ import { USCurrencyFormat } from '../App'
 
 export default class MainSummary extends Component {
 
-  total = Object.keys(this.props.selected).reduce(
-    (acc, curr) => acc + this.props.selected[curr].cost,
-    0
-  );
-
   render() {
     return (
-      <div className="main__summary">
+      <section className="main__summary">
         <h2>Your cart</h2>
         {
           Object.entries(this.props.selected).map((feature, idx) => {
-            // console.log(feature[1])
+            const featureHash = feature + '-' + idx;
             return <SummaryOption
-              key={idx}
+              key={featureHash}
               index={idx}
               label={feature[0]}
               value={feature[1].name}
@@ -30,10 +25,10 @@ export default class MainSummary extends Component {
         <div className="summary__total">
           <div className="summary__total__label">Total</div>
           <div className="summary__total__value">
-            {USCurrencyFormat.format(this.total)}
+            {USCurrencyFormat.format(this.props.total)}
           </div>
         </div>
-      </div>
+      </section>
     )
   }
 }

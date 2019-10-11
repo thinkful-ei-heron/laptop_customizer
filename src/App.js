@@ -83,36 +83,28 @@ class App extends Component {
     }
   }
 
-  updateFeature = (feature, newValue) => {
-    const selected = Object.assign({}, this.state.selected);
-    selected[feature] = newValue;
-    this.setState({
-      selected
-    });
-  };
-
   // render() {
-  //   const features = Object.keys(this.state.features).map((feature, idx) => {
-  //     const featureHash = feature + '-' + idx;
-  //   const options = this.state.features[feature].map(item => {
-  //     const itemHash = slugify(JSON.stringify(item));
-  //     return (
-  //       <div key={itemHash} className="feature__item">
-  //         <input
-  //           type="radio"
-  //           id={itemHash}
-  //           className="feature__option"
-  //           name={slugify(feature)}
-  //           checked={item.name === this.state.selected[feature].name}
-  //           onChange={e => this.updateFeature(feature, item)}
-  //         />
-  //         <label htmlFor={itemHash} className="feature__label">
-  //           {item.name} ({this.state.currencyFormat.format(item.cost)})
-  //           </label>
-  //       </div>
-  //     );
-  //   });
-  //   })
+  // const features = Object.keys(this.state.features).map((feature, idx) => {
+  //   const featureHash = feature + '-' + idx;
+  // const options = this.state.features[feature].map(item => {
+  //   const itemHash = slugify(JSON.stringify(item));
+  //   return (
+  //     <div key={itemHash} className="feature__item">
+  //       <input
+  //         type="radio"
+  //         id={itemHash}
+  //         className="feature__option"
+  //         name={slugify(feature)}
+  //         checked={item.name === this.state.selected[feature].name}
+  //         onChange={e => this.updateFeature(feature, item)}
+  //       />
+  //       <label htmlFor={itemHash} className="feature__label">
+  //         {item.name} ({this.state.currencyFormat.format(item.cost)})
+  //         </label>
+  //     </div>
+  //   );
+  // });
+  // })
 
   // return (
   //   <fieldset className="feature" key={featureHash}>
@@ -138,8 +130,19 @@ class App extends Component {
   //     </div>
   //   );
   // });
+  updateFeature = (feature, newValue) => {
+    const selected = Object.assign({}, this.state.selected);
+    selected[feature] = newValue;
+    this.setState({
+      selected
+    });
+  };
 
   render() {
+    const total = Object.keys(this.state.selected).reduce(
+      (acc, curr) => acc + this.state.selected[curr].cost, 0
+    );
+
     return (
       <div className="App" >
         <header>
@@ -149,11 +152,11 @@ class App extends Component {
           <MainForm
             features={this.state.features}
             selected={this.state.selected}
-            currencyFormat={() => this.USCurrencyFormat()}
-            updateFeature={() => this.updateFeature()}
+            handleChange={this.updateFeature}
           />
           <MainSummary
             selected={this.state.selected}
+            total={total}
           />
         </main>
       </div>

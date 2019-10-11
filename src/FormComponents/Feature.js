@@ -6,7 +6,6 @@ import slugify from 'slugify';
 export default class Feature extends Component {
   render() {
     return (
-      // loop through feature -> fieldsets
       <fieldset className="feature" key={this.props.featureHash}>
         <legend className="feature__name" >
           <h3>{this.props.feature}</h3>
@@ -23,9 +22,6 @@ export default class Feature extends Component {
                 feature={this.props.feature}
                 selected={this.props.selected}
                 handleChange={this.props.handleChange}
-              // FeatureName={this.props.featureName}
-              // feature={this.props.feature}
-              // selected={this.props.selected}
               />
             )
           })

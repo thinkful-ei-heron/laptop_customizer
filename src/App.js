@@ -82,54 +82,6 @@ class App extends Component {
       },
     }
   }
-
-  // render() {
-  // const features = Object.keys(this.state.features).map((feature, idx) => {
-  //   const featureHash = feature + '-' + idx;
-  // const options = this.state.features[feature].map(item => {
-  //   const itemHash = slugify(JSON.stringify(item));
-  //   return (
-  //     <div key={itemHash} className="feature__item">
-  //       <input
-  //         type="radio"
-  //         id={itemHash}
-  //         className="feature__option"
-  //         name={slugify(feature)}
-  //         checked={item.name === this.state.selected[feature].name}
-  //         onChange={e => this.updateFeature(feature, item)}
-  //       />
-  //       <label htmlFor={itemHash} className="feature__label">
-  //         {item.name} ({this.state.currencyFormat.format(item.cost)})
-  //         </label>
-  //     </div>
-  //   );
-  // });
-  // })
-
-  // return (
-  //   <fieldset className="feature" key={featureHash}>
-  //     <legend className="feature__name">
-  //       <h3>{feature}</h3>
-  //     </legend>
-  //     {options}
-  //   </fieldset>
-  // );
-  // });
-
-  // const summary = Object.keys(this.state.selected).map((feature, idx) => {
-  //   const featureHash = feature + '-' + idx;
-  //   const selectedOption = this.state.selected[feature];
-
-  //   return (
-  //     <div className="summary__option" key={featureHash}>
-  //       <div className="summary__option__label">{feature} </div>
-  //       <div className="summary__option__value">{selectedOption.name}</div>
-  //       <div className="summary__option__cost">
-  //         {this.state.currencyFormat.format(selectedOption.cost)}
-  //       </div>
-  //     </div>
-  //   );
-  // });
   updateFeature = (feature, newValue) => {
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
@@ -142,7 +94,6 @@ class App extends Component {
     const total = Object.keys(this.state.selected).reduce(
       (acc, curr) => acc + this.state.selected[curr].cost, 0
     );
-
     return (
       <div className="App" >
         <header>

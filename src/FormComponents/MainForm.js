@@ -1,18 +1,17 @@
+import React, { Component } from 'react';
 
-import React, { Component } from 'react'
-
-import Feature from './Feature'
+import Feature from './Feature';
 
 export default class MainForm extends Component {
   render() {
     return (
-      <form className="main__form">
+      <form className='main__form'>
         <h2>Customize your laptop</h2>
-        {
-          Object.keys(this.props.features).map((feature, idx) => {
-            const featureHash = feature + '-' + idx;
+        {Object.keys(this.props.features).map((feature, idx) => {
+          const featureHash = feature + '-' + idx;
 
-            return <Feature
+          return (
+            <Feature
               key={featureHash}
               featureHash={featureHash}
               feature={feature}
@@ -20,9 +19,9 @@ export default class MainForm extends Component {
               selected={this.props.selected}
               handleChange={this.props.handleChange}
             />
-          })
-        }
+          );
+        })}
       </form>
-    )
+    );
   }
 }

@@ -13,7 +13,7 @@ import MainSummary from './SummaryComponents/MainSummary';
 
 export const USCurrencyFormat = new Intl.NumberFormat('en-US', {
   style: 'currency',
-  currency: 'USD'
+  currency: 'USD',
 });
 
 class App extends Component {
@@ -23,79 +23,80 @@ class App extends Component {
       selected: {
         Processor: {
           name: '17th Generation Intel Core HB (7 Core with donut spare)',
-          cost: 700
+          cost: 700,
         },
         'Operating System': {
           name: 'Ubuntu Linux 16.04',
-          cost: 200
+          cost: 200,
         },
         'Video Card': {
           name: 'Toyota Corolla 1.5v',
-          cost: 1150.98
+          cost: 1150.98,
         },
         Display: {
           name: '15.6" UHD (3840 x 2160) 60Hz Bright Lights and Knobs',
-          cost: 1500
-        }
+          cost: 1500,
+        },
       },
       features: {
         Processor: [
           {
             name: '17th Generation Intel Core HB (7 Core with donut spare)',
-            cost: 700
+            cost: 700,
           },
           {
             name: 'Professor X AMD Fire Breather with sidewinder technology',
-            cost: 1200
-          }
+            cost: 1200,
+          },
         ],
         'Operating System': [
           {
             name: 'Ubuntu Linux 16.04',
-            cost: 200
+            cost: 200,
           },
           {
             name: 'Bodhi Linux',
-            cost: 300
-          }
+            cost: 300,
+          },
         ],
         'Video Card': [
           {
             name: 'Toyota Corolla 1.5v',
-            cost: 1150.98
+            cost: 1150.98,
           },
           {
             name: 'Mind mild breeze 2000',
-            cost: 1345
-          }
+            cost: 1345,
+          },
         ],
         Display: [
           {
             name: '15.6" UHD (3840 x 2160) 60Hz Bright Lights and Knobs',
-            cost: 1500
+            cost: 1500,
           },
           {
             name: '15.3" HGTV (3840 x 2160) Home makeover edition',
-            cost: 1400
+            cost: 1400,
           },
-        ]
+        ],
       },
-    }
+    };
   }
   updateFeature = (feature, newValue) => {
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
     this.setState({
-      selected
+      selected,
     });
   };
 
   render() {
     const total = Object.keys(this.state.selected).reduce(
-      (acc, curr) => acc + this.state.selected[curr].cost, 0
+      (acc, curr) => acc + this.state.selected[curr].cost,
+      0
     );
     return (
-      <div className="App" >
+      <div className='App'>
         <header>
           <h1>ELF Computing | Laptops</h1>
         </header>
@@ -105,13 +106,10 @@ class App extends Component {
             selected={this.state.selected}
             handleChange={this.updateFeature}
           />
-          <MainSummary
-            selected={this.state.selected}
-            total={total}
-          />
+          <MainSummary selected={this.state.selected} total={total} />
         </main>
       </div>
-    )
+    );
   }
 }
 export default App;

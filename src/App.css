@@ -19,13 +19,14 @@ header {
   padding: 2rem;
 }
 
-header>h1, main {
+header > h1,
+main {
   width: 95%;
   max-width: 120rem;
   margin: 0 auto;
 }
 
-legend>h3 {
+legend > h3 {
   margin: 0;
 }
 
@@ -47,7 +48,7 @@ main {
   border: 0;
 }
 
-.feature+.feature {
+.feature + .feature {
   margin-top: 0.8rem;
 }
 
@@ -57,7 +58,7 @@ main {
   font-weight: bold;
 }
 
-.feature__item+.feature__item {
+.feature__item + .feature__item {
   margin-top: 0.8rem;
 }
 
@@ -87,15 +88,15 @@ while keeping them available to the keyboard */
   border-color: #888;
 }
 
-.feature__option:checked+.feature__label {
+.feature__option:checked + .feature__label {
   border: 0.2rem solid #0070c9;
 }
 
-.feature__option:focus+.feature__label {
+.feature__option:focus + .feature__label {
   box-shadow: 0 0 0 0.1rem #fff, 0 0 0 0.3rem #83c0fd;
 }
 
-.feature__option:not(:checked)+.feature__label {
+.feature__option:not(:checked) + .feature__label {
   cursor: pointer;
 }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { USCurrencyFormat } from '../App';
+import { CurrencyFormat } from '../CurrencyFormat';
 import slugify from 'slugify';
 
 export default class FeatureOption extends Component {
@@ -22,7 +22,7 @@ export default class FeatureOption extends Component {
         ></input>
         <label htmlFor={this.props.itemHash} className='feature__label'>
           {this.props.item.name}
-          {USCurrencyFormat.format(this.props.item.cost)}
+          {CurrencyFormat.format(this.props.item.cost)}
         </label>
       </div>
     );

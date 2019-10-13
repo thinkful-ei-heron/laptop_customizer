@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import SummaryOption from './SummaryOption';
-import { USCurrencyFormat } from '../App';
+import Total from './Total';
 
 export default class MainSummary extends Component {
   render() {
@@ -21,12 +21,7 @@ export default class MainSummary extends Component {
             />
           );
         })}
-        <div className='summary__total'>
-          <div className='summary__total__label'>Total</div>
-          <div className='summary__total__value'>
-            {USCurrencyFormat.format(this.props.total)}
-          </div>
-        </div>
+        <Total total={this.props.total} />
       </section>
     );
   }
